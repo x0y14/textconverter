@@ -8,6 +8,10 @@ import (
 // これマジ天才好き
 // source: https://stackoverflow.com/questions/68072383/how-to-convert-an-integer-to-a-string-without-buildin-java-methods
 func i2s(i int) string {
+	// ゼロのときだけ反応しないっぽいので直接返してあげる
+	if i == 0 {
+		return "0"
+	}
 	result := ""
 	digits := []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
 
@@ -27,12 +31,13 @@ func beki(x, n int) int {
 	}
 	return result
 }
+
+// 桁の小さい方から文字列を取り出して掛けてく
+// 注意 文字列アクセスが必要
 func s2i(s string) int {
 	result := 0
 	numOfDig := 0
-	//digits := []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
 	ss := strings.Split(s, "")
-
 	for len(s) > numOfDig {
 		cur := ss[len(ss)-(1+numOfDig)]
 		var n int
@@ -65,6 +70,5 @@ func s2i(s string) int {
 		}
 		numOfDig++
 	}
-
 	return result
 }
